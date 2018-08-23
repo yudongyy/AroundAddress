@@ -1,0 +1,22 @@
+package com.wyd.aroundaddress;
+
+import java.io.IOException;
+
+import okhttp3.ResponseBody;
+import retrofit2.Converter;
+
+/**
+ * @author wyd
+ * @description
+ * @date 2018/8/21 下午3:18
+ */
+public class StringResponseBodyConverter implements Converter<ResponseBody, String> {
+    @Override
+    public String convert(ResponseBody value) throws IOException {
+        try {
+            return value.string();
+        } finally {
+            value.close();
+        }
+    }
+}
